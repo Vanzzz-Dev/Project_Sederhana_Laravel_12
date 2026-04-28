@@ -1,22 +1,15 @@
 <?php
 
+use App\Http\Controllers\testController;
+use App\Http\Controllers\produkController;
 use Illuminate\Support\Facades\Route;
 
+// ============ Bawaan ============
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/helo', function(){
-    return 'Hello Cuy';
-})->name('seyHello');
-
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return 'Dashboard Admin';
-    });
-});
 
 
-Route::get('/test', function(){
-    dd(session()->all());
-});
+
+
