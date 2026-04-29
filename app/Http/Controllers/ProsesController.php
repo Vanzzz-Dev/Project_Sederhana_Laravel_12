@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tugas;
 
 
 class ProsesController extends Controller
@@ -13,9 +14,12 @@ class ProsesController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        
+        $data = DB::table('tugas')->get(); // ambil semua data
+
+        return view('dashboard', compact('data'));
     }
 
     /**
@@ -57,7 +61,15 @@ class ProsesController extends Controller
 
         return redirect('/home');
     }
-    /**
+
+
+    public function storeTugas(Request $request){
+        DB::table('tugas')->insert([
+            'detail' => $request->detail,
+            'status' => $request->status
+        ]);
+        return redirect('/home')->with('succes','Berhasil di tambahkan');
+    }    /**
      * Display the specified resource.
      */
     public function show(string $id)

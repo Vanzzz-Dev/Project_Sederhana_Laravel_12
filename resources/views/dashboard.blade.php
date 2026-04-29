@@ -7,7 +7,7 @@
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon text-bg-primary shadow-sm">
-                        <i class="bi bi-gear-fill"></i>
+                        <i class="fa-solid fa-list-check"></i>
                     </span>
                     <div class="info-box-content">
                         <span class="info-box-text">Tugas</span>
@@ -21,7 +21,7 @@
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon text-bg-success shadow-sm">
-                        <i class="bi bi-cart-fill"></i>
+                        <i class="fa-solid fa-check"></i>
                     </span>
                     <div class="info-box-content">
                         <span class="info-box-text">Selesai</span>
@@ -37,7 +37,7 @@
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon text-bg-warning shadow-sm">
-                        <i class="bi bi-people-fill"></i>
+                        <i class="fa-solid fa-chart-line"></i>
                     </span>
                     <div class="info-box-content">
                         <span class="info-box-text">Progres</span>
@@ -51,7 +51,7 @@
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon text-bg-danger shadow-sm">
-                        <i class="bi bi-hand-thumbs-up-fill"></i>
+                        <i class="fa-solid fa-hourglass-half"></i>
                     </span>
                     <div class="info-box-content">
                         <span class="info-box-text">Tertunda</span>
@@ -74,21 +74,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>John</td>
-                    <td>Doe</td>
-                </tr>
+               <?php $no = 1; ?>
+               @foreach ($data as $row)
+                   <td scope="row">{{ $no++ }}</td>
+                   <td>{{ $row->detail  }}</td>
+                   <td>{{ $row->status}}</td>
+                <td>
+                    <a href="/tampil/{{ $row->id }}" type="button" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/delete/{{ $row->id }}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+               @endforeach 
             </tbody>
         </table>
     </div>
